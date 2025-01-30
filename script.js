@@ -1,6 +1,8 @@
 let requestCount = 0;
 const choices = ["tosh", "qaychi", "qogoz"];
 
+let currentUser = '';
+
 function getRiggedChoice(userChoice) {
     requestCount++;
     let botChoice = "";
@@ -43,6 +45,18 @@ function displayResult(userChoice, botChoice) {
         resultText.textContent = "Siz yutqazdingiz! 😢";
     }
 }
+
+function login() {
+    currentUser = document.getElementById('username').value;
+    if (currentUser) {
+        document.getElementById('user-login').style.display = 'none';
+        document.getElementById('game-screen').style.display = 'block';
+    } else {
+        alert("Iltimos, foydalanuvchi nomini kiriting.");
+    }
+}
+
+document.getElementById("login-btn").addEventListener("click", login);
 
 document.querySelectorAll(".choice-btn").forEach(button => {
     button.addEventListener("click", () => {
